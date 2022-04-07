@@ -1,0 +1,19 @@
+@inherits Custom.Hybrid.Razor12
+@* This inherits statement gets you features like App, CmsContext, Data etc. - you can delete this comment *@
+@using ToSic.Sxc.Services;
+@{
+  // Use beta csp service
+  var csp = GetService<ICspService>();
+  // future api, by far not ready...
+  // var policy = csp.Build(defaultSrc: "self");
+  // csp.AddPolicy("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; style-src 'unsafe-inline'");
+  csp.AddReport("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'unsafe-eval'");
+  // csp.Test("Content-Security-Policy", "default-src 'self'; img-src https://*; child-src 'none';");
+}
+
+<div @Edit.TagToolbar(Content)>
+  <h1>Report CSP</h1>
+  <p>
+    This should enable CSP Reporting
+  </p>
+</div>
