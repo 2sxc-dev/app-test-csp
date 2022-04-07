@@ -7,7 +7,7 @@
   // future api, by far not ready...
   // var policy = csp.Build(defaultSrc: "self");
   // csp.AddPolicy("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; style-src 'unsafe-inline'");
-  csp.AddReport("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' 'unsafe-eval'");
+  csp.AddReport("default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'");
   // csp.Test("Content-Security-Policy", "default-src 'self'; img-src https://*; child-src 'none';");
 }
 
