@@ -8,10 +8,68 @@
   // var policy = csp.Build(defaultSrc: "self");
    // csp.AddPolicy("default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://demo");
 
-  csp.Add("default-src", "'self'");
-  csp.Add("script-src", "'self' 'unsafe-inline' 'unsafe-eval'");
+  @* csp.Add("default-src", "'self'"); *@
+  @* csp.Add("script-src", "'self' 'unsafe-inline' 'unsafe-eval'");
   csp.Add("style-src", "'self'");
-  csp.Add("style-src", "'unsafe-inline'");
+  csp.Add("style-src", "'unsafe-inline'"); *@
+
+  @* Directives *@
+
+  @* Defines source for web-workers, iframe's and frame's *@
+  @* Not useful for us. Almost no use cases for blocking iframe's source URLs *@
+  @* csp.Add("child-src", "'self'"); *@
+
+  @* Restricts requests / connections to specified sources *@
+  @* EX: <a ping="URL">, XMLHttpRequest, WebSocket, EventSource, Navigator.sendBeacon() *@
+  @* Only useful if communication is strictly limited to local backend *@
+  @* csp.Add("connect-src", "'self'"); *@
+
+  @* Fallback of resources access restriction *@
+  csp.Add("default-src", "'self'");
+
+  @* Allowed script sources *@
+  csp.Add("script-src", "'self' 'unsafe-inline'");
+
+  @* Allowed style sources *@
+  csp.Add("style-src", "'self' 'unsafe-inline'");
+
+  @* Allowed font sources *@
+  csp.Add("font-src", "'self'");
+
+  @* Allowed img sources *@
+  csp.Add("img-src", "'self' data: 'unsafe-eval'");
+
+  @* Allowed media sources *@
+  csp.Add("media-src", "'self'");
+
+  @* Allowed iframe and frame sources *@
+  @* csp.Add("frame-src", "'self'"); *@
+
+  @* Allowed manifest sources - deprecated*@
+  @* csp.Add("manifest-src", "'self'"); *@
+
+  @* Allowed object sources *@
+  csp.Add("object-src", "'none'");
+
+  @* Allowed base sources *@
+  csp.Add("base-uri", "'self'");
+
+  @* Resources as sandbox *@
+  @* csp.Add("sandbox", "'self'"); *@
+
+  @* Allowed form target urls *@
+  csp.Add("form-action", "'self'");
+
+  @* Allowed form-ancestors urls *@
+  @* csp.Add("frame-ancestors", "'self'"); *@
+
+  @* Treats HTTP as HTTPS *@
+  @* csp.Add("upgrade-insecure-requests"); *@
+
+  csp.Add("style-src", "fonts.googleapis.com");
+  csp.Add("font-src", "fonts.gstatic.com");
+
+
   csp.ReportOnly = false;
 }
 
