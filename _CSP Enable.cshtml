@@ -25,7 +25,7 @@
   @* csp.Add("connect-src", "'self'"); *@
 
   @* Fallback of resources access restriction *@
-  csp.Add("default-src", "'self'");
+  csp.Add("default-src", "'self' https:");
 
   @* Allowed script sources *@
   csp.Add("script-src", "'self' 'unsafe-inline'");
@@ -37,10 +37,10 @@
   csp.Add("font-src", "'self'");
 
   @* Allowed img sources *@
-  csp.Add("img-src", "'self' data: 'unsafe-eval'");
+  csp.Add("img-src", "'self' data: https:");
 
   @* Allowed media sources *@
-  csp.Add("media-src", "'self'");
+  csp.Add("media-src", "'self' https:");
 
   @* Allowed iframe and frame sources *@
   @* csp.Add("frame-src", "'self'"); *@
@@ -52,22 +52,27 @@
   csp.Add("object-src", "'none'");
 
   @* Allowed base sources *@
-  csp.Add("base-uri", "'self'");
+  @* csp.Add("base-uri", "'self'"); *@
 
   @* Resources as sandbox *@
   @* csp.Add("sandbox", "'self'"); *@
 
   @* Allowed form target urls *@
-  csp.Add("form-action", "'self'");
+  csp.Add("form-action", "'self' https:");
 
   @* Allowed form-ancestors urls *@
   @* csp.Add("frame-ancestors", "'self'"); *@
 
   @* Treats HTTP as HTTPS *@
-  @* csp.Add("upgrade-insecure-requests"); *@
+  csp.Add("upgrade-insecure-requests");
 
+  @* Google fonts *@
   csp.Add("style-src", "fonts.googleapis.com");
   csp.Add("font-src", "fonts.gstatic.com");
+
+  @* Disqus *@
+  @* csp.Add("script-src", "subdomain.disqus.com a.disquscdn.com");
+  csp.Add("connect-src", "https://links.services.disqus.com wss://realtime.services.disqus.com"); *@
 
 
   csp.ReportOnly = false;
